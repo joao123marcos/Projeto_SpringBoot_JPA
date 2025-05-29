@@ -32,7 +32,7 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(u1,u2)); //salva no banco  
 
-        throw new UnsupportedOperationException("Unimplemented method 'run'");
+        //throw new UnsupportedOperationException("Unimplemented method 'run'");
     }
 
 }

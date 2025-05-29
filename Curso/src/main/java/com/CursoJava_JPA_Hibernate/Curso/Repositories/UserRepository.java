@@ -6,6 +6,8 @@ import com.CursoJava_JPA_Hibernate.Curso.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+}
+
   //Só com isso eu já consigo ter meios de acessar o banco  
  /*No JPA (Java Persistence API), um Repository (Repositório) é uma abstração que representa 
    uma coleção de objetos de uma determinada entidade (como Cliente, Produto, etc.) armazenados 
@@ -62,7 +64,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
    (ou outra interface similar) e o Spring automaticamente implementa os métodos básicos para você.
    
    https://docs.google.com/document/d/1iuLP1evpestf6nN0F0vHubhuN9_1I4tSA9t-bvwqqFw/edit?usp=sharing
-   
-   
    */
-}
+
