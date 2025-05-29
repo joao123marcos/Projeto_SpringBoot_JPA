@@ -1,4 +1,4 @@
-package com.Curso_JPA_Hibernate.Curso.config;
+package com.CursoJava_JPA_Hibernate.Curso.config;
 
 import java.util.Arrays;
 
