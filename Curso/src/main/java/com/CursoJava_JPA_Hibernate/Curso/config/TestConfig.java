@@ -12,6 +12,7 @@ import com.CursoJava_JPA_Hibernate.Curso.Repositories.OrderRepository;
 import com.CursoJava_JPA_Hibernate.Curso.Repositories.UserRepository;
 import com.CursoJava_JPA_Hibernate.Curso.entities.Order;
 import com.CursoJava_JPA_Hibernate.Curso.entities.User;
+import com.CursoJava_JPA_Hibernate.Curso.enums.OrderStatus;
 
 @Configuration
 @Profile("test") // Vai executar apenas no perfil de teste no banco de dados
@@ -39,13 +40,16 @@ public class TestConfig implements CommandLineRunner {
                 "977777777", "123456");
 
         Order o1 = new Order(null, 
-          Instant.parse("2025-05-30T14:42:07Z"), u1);
+          Instant.parse("2025-05-30T14:42:07Z"), 
+          OrderStatus.valueOf("SHIPPED"), u1);
         
         Order o2 = new Order(null, 
-          Instant.parse("2025-05-30T15:42:10Z"), u2);
+          Instant.parse("2025-05-30T15:42:10Z"), 
+          OrderStatus.valueOf("WAITING_PAYMENT"), u2);
         
         Order o3 = new Order(null, 
-          Instant.parse("2025-05-30T16:21:22Z"), u1);
+          Instant.parse("2025-05-30T16:21:22Z"), 
+          OrderStatus.valueOf("DELIVERED"), u1);
 
         userRepository.saveAll(Arrays.asList(u1, u2)); // salva no banco
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));

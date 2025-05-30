@@ -3,6 +3,8 @@ package com.CursoJava_JPA_Hibernate.Curso.entities;
 import java.io.Serializable;
 import java.time.Instant;
 
+import com.CursoJava_JPA_Hibernate.Curso.enums.OrderStatus;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +22,9 @@ public class Order implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Instant moment;
+
+    //Precisa ser int para salvar no banco como int
+    private Integer orderStatus;
     
     //Essa anotação cria a chave estrangueira no meu banco
     @ManyToOne
@@ -29,10 +34,11 @@ public class Order implements Serializable{
     public Order() {
     }
 
-    public Order(Integer id, Instant moment, 
+    public Order(Integer id, Instant moment, OrderStatus orderStatus, 
       User client) {
         this.id = id;
         this.moment = moment;
+        setOrderStatus(orderStatus);
         this.client = client;
     }
 
@@ -58,6 +64,17 @@ public class Order implements Serializable{
 
     public void setClient(User client) {
         this.client = client;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return OrderStatus.convertOrderStatusInt(this.orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        if (orderStatus != null) {
+          this.orderStatus = orderStatus.getCodeEnum();    
+        }
+        
     }
 
     @Override
