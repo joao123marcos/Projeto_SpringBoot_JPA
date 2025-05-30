@@ -2,7 +2,6 @@ package com.CursoJava_JPA_Hibernate.Curso.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
