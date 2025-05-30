@@ -29,13 +29,12 @@ public class Product implements Serializable{
     }
 
     public Product(Integer id, String name, String description, Double price, 
-     String imgUrl, Category category) {
+     String imgUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imgUrl = imgUrl;
-        categories.add(category);
     }
 
     public Integer getId() {
