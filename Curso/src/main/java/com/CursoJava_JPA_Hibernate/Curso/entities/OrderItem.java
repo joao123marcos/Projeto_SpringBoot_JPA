@@ -3,6 +3,7 @@ package com.CursoJava_JPA_Hibernate.Curso.entities;
 import java.io.Serializable;
 
 import com.CursoJava_JPA_Hibernate.Curso.pk.OrderItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -17,7 +18,7 @@ public class OrderItem implements Serializable{
      * que este campo é embutido em order item pk
      */
     @EmbeddedId
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
     private Double price;
@@ -32,7 +33,8 @@ public class OrderItem implements Serializable{
         this.quantity = quantity;
         this.price = price;
     }
-
+    
+    @JsonIgnore
     public Order getOrder(){
         return id.getOrder();
     }
