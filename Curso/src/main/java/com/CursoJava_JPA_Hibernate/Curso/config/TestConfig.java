@@ -16,6 +16,7 @@ import com.CursoJava_JPA_Hibernate.Curso.Repositories.UserRepository;
 import com.CursoJava_JPA_Hibernate.Curso.entities.Category;
 import com.CursoJava_JPA_Hibernate.Curso.entities.Order;
 import com.CursoJava_JPA_Hibernate.Curso.entities.OrderItem;
+import com.CursoJava_JPA_Hibernate.Curso.entities.Payment;
 import com.CursoJava_JPA_Hibernate.Curso.entities.Product;
 import com.CursoJava_JPA_Hibernate.Curso.entities.User;
 import com.CursoJava_JPA_Hibernate.Curso.enums.OrderStatus;
@@ -93,7 +94,7 @@ public class TestConfig implements CommandLineRunner {
           
           Order o1 = new Order(null,
                                Instant.parse("2025-05-30T14:42:07Z"),
-                               OrderStatus.valueOf("SHIPPED"), u1);
+                               OrderStatus.PAID, u1);
           
           Order o2 = new Order(null,
                               Instant.parse("2025-05-30T15:42:10Z"),
@@ -112,6 +113,16 @@ public class TestConfig implements CommandLineRunner {
            OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
            
            orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+
+           //Simulando uma situação onde o pedido foi pago 2 horas depois
+           Payment pay1 = new Payment(null, 
+            Instant.parse("2025-05-30T16:42:07Z"), o1);
+           
+           /*Para salvar o objeto dependente numa relação um para um, faço a 
+           assossição em memória e chamo o repository da classe independente que neste
+           caso é a Order*/
+           o1.setPayment(pay1);
+           orderRepository.save(o1);
         }
 
 }
