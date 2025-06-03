@@ -57,6 +57,8 @@ public class UserResource {
 
         return ResponseEntity.created(uri).body(user);
 
+        //https://docs.google.com/document/d/1oguYmD5tzcyQ4_WpW9Ob80AD3Dt15WkyI9HMQkYgaGA/edit?usp=sharing
+
     }
     
 }
