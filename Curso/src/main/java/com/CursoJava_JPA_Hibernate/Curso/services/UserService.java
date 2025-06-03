@@ -28,4 +28,8 @@ public class UserService {
         //A operação get pega o q está dentro de obj e transforma, neste caso 
         //para user
     }
+
+    public User insertUser(User user){
+       return userRepository.save(user);
+    }
 }
