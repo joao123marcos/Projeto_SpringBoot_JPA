@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.CursoJava_JPA_Hibernate.Curso.Repositories.UserRepository;
 import com.CursoJava_JPA_Hibernate.Curso.entities.User;
+import com.CursoJava_JPA_Hibernate.Curso.services.exceptions.ResourceNotFoundException;
 
 /*As classes de serviço contém a lógica de négocio e apontam 
   para a camada de repositórios*/
@@ -23,7 +24,7 @@ public class UserService {
 
     public User findById(Long id){
         Optional<User> obj = userRepository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 
         //A operação get pega o q está dentro de obj e transforma, neste caso 
         //para user
