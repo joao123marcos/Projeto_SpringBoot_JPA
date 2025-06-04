@@ -36,4 +36,22 @@ public class UserService {
     public void deleteUser(Long id){
         userRepository.deleteById(id);
     }
+
+    public User updateUser(Long id, User obj){
+        User entity = userRepository.getReferenceById(id);
+        /*Ao invés de ir no banco e recuperar o recurso a ser manipulado, como faz o findByid
+          o getReferenceById monitora este recurso pelo JPA em memoria pra eu manipular ele e
+          depois q vou salvar isso em banco*/
+        
+        updateDataUser(entity, obj);
+        return userRepository.save(entity); 
+    }
+
+    private void updateDataUser(User entity, User obj) {
+        entity.setName(obj.getName());
+        entity.setEmail(obj.getEmail());
+        entity.setPhone(obj.getPhone());        
+    }
+
+    
 }
