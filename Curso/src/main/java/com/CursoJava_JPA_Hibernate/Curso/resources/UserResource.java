@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,9 +57,15 @@ public class UserResource {
          * e esse created espera como paramentro um URI location, por isso fiz a linha acima*/
 
         return ResponseEntity.created(uri).body(user);
-
         //https://docs.google.com/document/d/1oguYmD5tzcyQ4_WpW9Ob80AD3Dt15WkyI9HMQkYgaGA/edit?usp=sharing
-
     }
     
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+
+        /*Nos casos em que o meu endpoint não vai retornar nada o código http é o 204, desta
+        * forma o noContent é a fomra correta de usar*/
+    }
 }
