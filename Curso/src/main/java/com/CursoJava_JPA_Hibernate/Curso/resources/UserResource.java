@@ -61,7 +61,7 @@ public class UserResource {
         //https://docs.google.com/document/d/1oguYmD5tzcyQ4_WpW9Ob80AD3Dt15WkyI9HMQkYgaGA/edit?usp=sharing
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
