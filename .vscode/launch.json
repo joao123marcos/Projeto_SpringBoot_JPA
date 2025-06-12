@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CursoApplication<Curso>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.CursoJava_JPA_Hibernate.Curso.CursoApplication",
+            "projectName": "Curso",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
